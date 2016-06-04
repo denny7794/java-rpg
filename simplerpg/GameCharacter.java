@@ -25,6 +25,8 @@ public class GameCharacter implements Cloneable  {
         return life;
     }
     
+	protected int gold;
+
     public GameCharacter(String _charClass, String _name, int _hp, int _attack, int _defense)
     {
         name = _name;

@@ -30,4 +30,8 @@ public class Hero extends GameCharacter { // Класс "герой" насле�
         }        
     }
     
+	public void goldGain(int _gold) // Метод получения золота
+	{
+		gold = _gold;
+	}
 }
