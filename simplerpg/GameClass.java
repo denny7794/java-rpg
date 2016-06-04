@@ -69,7 +69,8 @@ public class GameClass {
             if (inpInt == 2) // Герой защищается
                 mainHero.setBlockStance(); // Вызывем метод включения защитной стойки
 			if (inpInt == 4){ // Герой пьет зелье
-				h_potion.itemAction(mainHero);
+				if (mainHero.hasPotion) h_potion.itemAction(mainHero);
+				else System.out.println("Зелья нет!");
 			}
             if (inpInt == 9) break; // Выход из игры
             // Если выбран любой другой inpInt - Герой пропустит ход
