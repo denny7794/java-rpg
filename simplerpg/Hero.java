@@ -13,6 +13,7 @@ public class Hero extends GameCharacter { // Класс "герой" насле�
         currentExp = 0;
         expToNextLevel = 1000;
 		gold = 0;
+		hasPotion = false;
     }
     
     public void expGain(int _exp) // Метод получение опыта

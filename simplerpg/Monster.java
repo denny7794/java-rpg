@@ -11,4 +11,9 @@ public class Monster extends GameCharacter {
 	{
 		return GameClass.rand.nextInt(hpMax / 10);
 	}
+
+	public boolean dropPotion(){
+		if (GameClass.rand.nextInt(2) == 1)	return true;
+		return false;
+	}
 }

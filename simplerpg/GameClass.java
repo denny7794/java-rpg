@@ -9,6 +9,8 @@ public class GameClass {
     
     private Hero[] heroPattern = new Hero[3];
     private Monster[] monsterPattern = new Monster[3];
+
+	HealthPotion h_potion = new HealthPotion();
     
     private Hero mainHero;
     private Monster currentMonster;
@@ -40,7 +42,7 @@ public class GameClass {
             currentMonster.ShowInfo();
             
             //// Ход игрока ////
-            System.out.println("Ход игрока: 1. Атака 2. Защита 3. Пропустить ход 9. Завершить игру"); // Просто сообщение о возможных действиях
+            System.out.println("Ход игрока: 1. Атака 2. Защита 3. Пропустить ход 4. Выпить зелье 9. Завершить игру"); // Просто сообщение о возможных действиях
             mainHero.makeNewRound(); // Вызываем метод сброса параметров героя на начало раунда
             inpInt = sc.nextInt(); // Считываем введенное в консоль число
             System.out.print("\n\n"); // Печатаем два символа перевода строки
@@ -53,13 +55,23 @@ public class GameClass {
                     mainHero.expGain(currentMonster.getHpMax() * 2); // Даем герою опыта в размере (Здоровье_монстра * 2)
 					int lootGold = currentMonster.dropGold(currentMonster.getHpMax());
 					mainHero.goldGain(lootGold); // Получаем золото
-					System.out.println("Получено золота: " + lootGold);
+					System.out.println("Получено золота: " + lootGold);	
+					boolean lootPotion = currentMonster.dropPotion();
+					System.out.println("Выпало зелье? " + lootPotion);
+					if(lootPotion && !mainHero.hasPotion){ // Получаем зелье лечения
+						mainHero.hasPotion = true;
+						System.out.println("Получено зелье лечения");
+					}
                     currentMonster = (Monster)monsterPattern[rand.nextInt(3)].clone(); // Создаем нового монстра случайного типа, копируя из шаблона
                     System.out.println("На поле боя выходит " + currentMonster.getName()); // Выводим сообщение о выходе нового врага на поле боя
                 }
             }
             if (inpInt == 2) // Герой защищается
                 mainHero.setBlockStance(); // Вызывем метод включения защитной стойки
+			if (inpInt == 4){ // Герой пьет зелье
+				if (mainHero.hasPotion) h_potion.itemAction(mainHero);
+				else System.out.println("Зелья нет!");
+			}
             if (inpInt == 9) break; // Выход из игры
             // Если выбран любой другой inpInt - Герой пропустит ход
 
