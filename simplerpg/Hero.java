@@ -4,6 +4,8 @@ public class Hero extends GameCharacter { // Класс "герой" насле�
     
     private int currentExp;
     private int expToNextLevel;
+
+	private int gold;
     
     public Hero(String _charClass, String _name, int _hp, int _attack, int _defense)
     {        
@@ -31,8 +33,19 @@ public class Hero extends GameCharacter { // Класс "герой" насле�
         }        
     }
     
+	public int getGold()
+	{
+		return gold;
+	}
+
 	public void goldGain(int _gold) // Метод получения золота
 	{
-		gold += _gold;
+		gold = getGold() + _gold;
 	}
+	
+	@Override
+	public void ShowInfo() // Вывод инфо по персонажу
+    {
+        System.out.println("Имя: " + name + " Здоровье: " + hp + "/" + hpMax + " Опыт: " + currentExp + " Золото: " + gold);
+    }
 }

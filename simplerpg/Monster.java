@@ -7,4 +7,8 @@ public class Monster extends GameCharacter {
         super(_charClass, _name, _hp, _attack, _defense);
     }
     
+	public int dropGold(int hpMax)
+	{
+		return GameClass.rand.nextInt(hpMax / 10);
+	}
 }
