@@ -53,7 +53,13 @@ public class GameClass {
                     mainHero.expGain(currentMonster.getHpMax() * 2); // Даем герою опыта в размере (Здоровье_монстра * 2)
 					int lootGold = currentMonster.dropGold(currentMonster.getHpMax());
 					mainHero.goldGain(lootGold); // Получаем золото
-					System.out.println("Получено золота: " + lootGold);
+					System.out.println("Получено золота: " + lootGold);	
+					boolean lootPotion = currentMonster.dropPotion();
+					System.out.println("Выпало зелье? " + lootPotion);
+					if(lootPotion && !mainHero.hasPotion){ // Получаем зелье лечения
+						mainHero.hasPotion = true;
+						System.out.println("Получено зелье лечения");
+					}
                     currentMonster = (Monster)monsterPattern[rand.nextInt(3)].clone(); // Создаем нового монстра случайного типа, копируя из шаблона
                     System.out.println("На поле боя выходит " + currentMonster.getName()); // Выводим сообщение о выходе нового врага на поле боя
                 }

@@ -25,6 +25,7 @@ public class GameCharacter implements Cloneable  {
         return life;
     }
     
+	protected boolean hasPotion;
 	
 
     public GameCharacter(String _charClass, String _name, int _hp, int _attack, int _defense)
