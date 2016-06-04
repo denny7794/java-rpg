@@ -51,6 +51,8 @@ public class GameClass {
                 {
                     System.out.println(currentMonster.getName() + " погиб"); // Печатаем сообщение о гибели монстра
                     mainHero.expGain(currentMonster.getHpMax() * 2); // Даем герою опыта в размере (Здоровье_монстра * 2)
+					mainHero.goldGain(rand.nextInt(currentMonster.getHpMax() / 10)); // Получаем золото
+					System.out.println("Получено золота: " + mainHero.gold);
                     currentMonster = (Monster)monsterPattern[rand.nextInt(3)].clone(); // Создаем нового монстра случайного типа, копируя из шаблона
                     System.out.println("На поле боя выходит " + currentMonster.getName()); // Выводим сообщение о выходе нового врага на поле боя
                 }

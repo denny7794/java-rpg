@@ -10,6 +10,7 @@ public class Hero extends GameCharacter { // Класс "герой" насле�
         super(_charClass, _name, _hp, _attack, _defense);
         currentExp = 0;
         expToNextLevel = 1000;
+		gold = 0;
     }
     
     public void expGain(int _exp) // Метод получение опыта
@@ -32,6 +33,6 @@ public class Hero extends GameCharacter { // Класс "герой" насле�
     
 	public void goldGain(int _gold) // Метод получения золота
 	{
-		gold = _gold;
+		gold += _gold;
 	}
 }
